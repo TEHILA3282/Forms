@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>טופס פעולות בגמ"ח</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap');
+
+    * {
+      font-family: 'Assistant', Arial;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      background: #fff;
+      margin: auto;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 15px;
+      max-width: 150px;
+    }
+
+    .Koteret {
+      color: #ff9222;
+      font-weight: bold;
+      text-align: right;
+      font-size: 21px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .fieldName {
+      text-align: right;
+      font-size: 16px;
+      color: #555;
+      margin-top: 10px;
+    }
+
+    .TextBox {
+      width: 100%;
+      padding: 6px;
+      font-size: large;
+      color: #3f475e;
+      text-align: right;
+      border: none;
+      border-bottom: 2px solid #f7bb4d;
+      background-color: #FFFFFB;
+    }
+
+    .row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .half {
+      flex: 1;
+      min-width: 45%;
+    }
+
+    .buttonAction {
+      color: #4a4a4a;
+      background: #f1f1f1;
+      width: 100%;
+      margin: 8px 0;
+      text-align: center;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Assistant';
+      border: 2px solid #edd9c6;
+    }
+
+    .Bt {
+      font-family: 'Assistant', sans-serif;
+      font-size: large;
+      color: white;
+      background-color: #38c232;
+      text-align: center;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .Bt:hover {
+      background-color: #2ba623;
+    }
+
+    /* אזור ערב א' ו-ב' - עיצוב */
+    .arev-section {
+      border: 1px solid #f7bb4d;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" alt="לוגו" class="logo" />
+
+    <h2 class="Koteret">פרטי ממלא הטופס</h2>
+    <form>
+      <div class="row">
+        <div class="half">
+          <div class="fieldName">שם משפחה *</div>
+          <input class="TextBox" type="text" required />
+
+          <div class="fieldName">רחוב</div>
+          <input class="TextBox" type="text" />
+        </div>
+
+        <div class="half">
+          <div class="fieldName">שם פרטי *</div>
+          <input class="TextBox" type="text" required />
+
+          <div class="fieldName">ת.ז *</div>
+          <input class="TextBox" type="text" required />
+
+          <div class="fieldName">עיר</div>
+          <input class="TextBox" type="text" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="half">
+          <div class="fieldName">מספר</div>
+          <input class="TextBox" type="text" />
+        </div>
+        <div class="half">
+          <div class="fieldName">דירה</div>
+          <input class="TextBox" type="text" />
+        </div>
+      </div>
+
+      <div class="fieldName">מייל</div>
+      <input class="TextBox" type="email" />
+
+      <!-- שאלה נפרדת מחוץ ל'בקשת הלוואה' -->
+      <div class="fieldName" style="margin-top: 20px;">האם אתה חבר בגמ"ח?</div>
+      <div style="text-align: right; margin-bottom: 10px;">
+        <label><input type="radio" name="isMember" value="yes" /> כן</label>
+        <label style="margin-left: 20px;"><input type="radio" name="isMember" value="no" /> לא</label>
+      </div>
+
+      <h3 class="Koteret">סוג פעולה</h3>
+      <button type="button" class="buttonAction">בקשת הלוואה</button>
+      <button type="button" class="buttonAction">משיכת פיקדון</button>
+      <button type="button" class="buttonAction">הפקדת פיקדון</button>
+      <button type="button" class="buttonAction">בקשת טפסים</button>
+      <button type="button" class="buttonAction">הצטרפות לחברות בגמ"ח</button>
+      <button type="button" class="buttonAction">חתימת ערב להלוואה</button>
+      <button type="button" class="buttonAction">שכר חוב</button>
+
+      <!-- אזור בקשת הלוואה -->
+      <div
+        id="loanRequestSection"
+        style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;"
+      >
+        <h3 class="Koteret">בקשת הלוואה</h3>
+        <p>מבקש בזאת לאשר לי הלוואה:</p>
+
+        <div class="fieldName">סך הלוואה *</div>
+        <input class="TextBox" type="number" min="0" step="0.01" required />
+
+        <div class="fieldName">אופן תשלום *</div>
+        <select class="TextBox" required>
+          <option value="">בחר</option>
+          <option value="oneTime">חד פעמי</option>
+          <option value="installments">תשלומים</option>
+        </select>
+
+        <div class="fieldName">מטרת ההלוואה *</div>
+        <select class="TextBox" required>
+          <option value="">בחר</option>
+          <option value="housePurchase">רכישת דירה</option>
+          <option value="expansion">הרחבה</option>
+          <option value="renovation">שיפוץ</option>
+          <option value="barMitzvah">בר מצווה</option>
+          <option value="childrenWedding">נישואי הילדים</option>
+          <option value="extraExpense">הוצאה חריגה</option>
+        </select>
+
+        <div class="fieldName">נא פרט את סיבת הבקשה</div>
+        <textarea
+          class="TextBox"
+          rows="4"
+          style="resize: vertical;"
+        ></textarea>
+
+        <!-- ערב א' - תמיד מוצג -->
+        <div id="arevASection" class="arev-section">
+          <h4 class="Koteret" style="font-size: 18px; margin-bottom: 10px;">ערב א'</h4>
+
+          <div class="fieldName">שם *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="fieldName">שם משפחה *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="fieldName">ת"ז *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="fieldName">נייד *</div>
+          <input class="TextBox" type="tel" />
+
+          <div class="fieldName">עיר *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="fieldName">רחוב *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="row" style="gap: 10px;">
+            <div class="half">
+              <div class="fieldName">מספר *</div>
+              <input class="TextBox" type="text" />
+            </div>
+            <div class="half">
+              <div class="fieldName">דירה</div>
+              <input class="TextBox" type="text" />
+               <!-- שאלה: האם ההלוואה מעל 10,000 ש"ח? -->
+        <div class="fieldName" style="margin-top: 20px;">האם ההלוואה מעל 10,000 ש"ח?</div>
+        <div style="text-align: right; margin-bottom: 10px;">
+          <label><input type="radio" name="loanOver10k" value="yes" /> כן</label>
+          <label style="margin-left: 20px;">
+            <input type="radio" name="loanOver10k" value="no" /> לא
+          </label>
+        </div>
+            </div>
+          </div>
+        </div>
+
+       
+
+        <!-- ערב ב' - אזור למילוי, מוסתר כברירת מחדל -->
+        <div
+          id="arevBSection"
+          class="arev-section"
+          style="display:none;"
+        >
+          <h4 class="Koteret" style="font-size: 18px; margin-bottom: 10px;">ערב ב'</h4>
+
+          <div class="fieldName">שם *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="fieldName">שם משפחה *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="fieldName">ת"ז *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="fieldName">נייד *</div>
+          <input class="TextBox" type="tel" />
+
+          <div class="fieldName">עיר *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="fieldName">רחוב *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="row" style="gap: 10px;">
+            <div class="half">
+              <div class="fieldName">מספר *</div>
+              <input class="TextBox" type="text" />
+            </div>
+            <div class="half">
+              <div class="fieldName">דירה</div>
+              <input class="TextBox" type="text" />
+            </div>
+          </div>
+          <!-- שאלה: האם ההלוואה מעל 20,000 ש"ח? -->
+          <div class="fieldName" style="margin-top: 20px;">האם ההלוואה מעל 20,000 ש"ח?</div>
+          <div style="text-align: right; margin-bottom: 10px;">
+            <label><input type="radio" name="loanOver20k" value="yes" /> כן</label>
+            <label style="margin-left: 20px;">
+              <input type="radio" name="loanOver20k" value="no" /> לא
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ערב ג' - אזור למילוי, מוסתר כברירת מחדל -->
+      <div
+        id="arevCSection"
+        class="arev-section"
+        style="display:none;"
+      >
+        <h4 class="Koteret" style="font-size: 18px; margin-bottom: 10px;">ערב ג'</h4>
+
+        <div class="fieldName">שם *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">שם משפחה *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">ת"ז *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">נייד *</div>
+        <input class="TextBox" type="tel" />
+
+        <div class="fieldName">עיר *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">רחוב *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="row" style="gap: 10px;">
+          <div class="half">
+            <div class="fieldName">מספר *</div>
+            <input class="TextBox" type="text" />
+          </div>
+          <div class="half">
+            <div class="fieldName">דירה</div>
+            <input class="TextBox" type="text" />
+          </div>
+        </div>
+        <div class="fieldName" style="margin-top: 20px;">האם ההלוואה מעל 30,000 ש"ח?</div>
+        <div style="text-align: right; margin-bottom: 10px;">
+          <label><input type="radio" name="loanOver30k" value="yes" /> כן</label>
+          <label style="margin-left: 20px;">
+            <input type="radio" name="loanOver30k" value="no" /> לא
+          </label>
+        </div>
+      </div>
+
+      <!-- כאן ערב ד' בתוך הטופס -->
+      <div id="arevDSection" class="arev-section" style="display:none;">
+        <h4 class="Koteret">ערב ד'</h4>
+
+        <div class="fieldName">שם *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">שם משפחה *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">ת\"ז *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">נייד *</div>
+        <input class="TextBox" type="tel" />
+
+        <div class="fieldName">עיר *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">רחוב *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="row" style="gap: 10px;">
+          <div class="half">
+            <div class="fieldName">מספר *</div>
+            <input class="TextBox" type="text" />
+          </div>
+          <div class="half">
+            <div class="fieldName">דירה</div>
+            <input class="TextBox" type="text" />
+          </div>
+        </div>
+      </div>
+
+      <!-- כאן בקשת משיכת פיקדון בתוך הטופס -->
+      <div id="withdrawSection" style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
+        <h3 class="Koteret">בקשת משיכת פיקדון</h3>
+
+        <div class="fieldName">סכום משיכה</div>
+        <select class="TextBox" id="withdrawAmountChoice">
+          <option value="">בחר</option>
+          <option value="full">כל הסכום</option>
+          <option value="other">אחר</option>
+        </select>
+
+        <div id="customWithdrawAmount" style="display:none; margin-top:10px;">
+          <div class="fieldName">הזן סכום</div>
+          <div style="display: flex; align-items: center;">
+            <input type="number" class="TextBox" style="flex: 1;" />
+            <span style="margin-right: 10px;">ש״ח</span>
+          </div>
+        </div>
+
+        <h4 class="Koteret" style="font-size: 18px; margin-top: 20px;">פרטי חשבון</h4>
+
+        <div class="fieldName">שם בעל החשבון</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר בנק</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר סניף</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר חשבון</div>
+        <input class="TextBox" type="text" />
+      </div>
+
+      <button type="submit" class="Bt">שלח טופס</button>
+    </form>
+  </div>
+
+  <script>
+    const loanSection = document.getElementById('loanRequestSection');
+    const withdrawSection = document.getElementById('withdrawSection');
+    const withdrawAmountChoice = document.getElementById('withdrawAmountChoice');
+    const customWithdrawAmount = document.getElementById('customWithdrawAmount');
+    const allButtons = document.querySelectorAll('.buttonAction');
+
+    allButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const text = btn.textContent.trim();
+
+        // תחילה – הסתרת כל החלקים
+        loanSection.style.display = 'none';
+        withdrawSection.style.display = 'none';
+
+        // הצגה בהתאם לבחירה
+        if (text === 'בקשת הלוואה') {
+          loanSection.style.display = 'block';
+        } else if (text === 'משיכת פיקדון') {
+          withdrawSection.style.display = 'block';
+        }
+
+        // איפוס כל השדות של שני הטפסים כשלא בשימוש
+        if (loanSection.style.display === 'none') {
+          loanSection.querySelectorAll('input, select, textarea').forEach((el) => {
+            if (el.type === 'radio' || el.type === 'checkbox') {
+              el.checked = false;
+            } else {
+              el.value = '';
+            }
+          });
+          document.getElementsByName('loanOver10k').forEach((el) => (el.checked = false));
+          document.getElementsByName('loanOver20k').forEach((el) => (el.checked = false));
+          document.getElementsByName('loanOver30k').forEach((el) => (el.checked = false));
+        }
+
+        if (withdrawSection.style.display === 'none') {
+          withdrawSection.querySelectorAll('input, select').forEach((el) => {
+            if (el.type === 'radio' || el.type === 'checkbox') {
+              el.checked = false;
+            } else {
+              el.value = '';
+            }
+          });
+          withdrawAmountChoice.value = '';
+          customWithdrawAmount.style.display = 'none';
+          customWithdrawAmount.querySelector('input').value = '';
+        }
+
+        // הסתרת ערב ב' וג' וד' בכל לחיצה מחדש
+        document.getElementById('arevBSection').style.display = 'none';
+        document.getElementById('arevCSection').style.display = 'none';
+        document.getElementById('arevDSection').style.display = 'none';
+      });
+    });
+
+    // הצגת ערב ב' אם הלוואה מעל 10,000
+    document.getElementsByName('loanOver10k').forEach((el) =>
+      el.addEventListener('change', (e) => {
+        if (e.target.value === 'yes') {
+          document.getElementById('arevBSection').style.display = 'block';
+        } else {
+          document.getElementById('arevBSection').style.display = 'none';
+          document.getElementById('arevCSection').style.display = 'none';
+          document.getElementById('arevDSection').style.display = 'none';
+          document.getElementsByName('loanOver20k').forEach((el) => (el.checked = false));
+          document.getElementsByName('loanOver30k').forEach((el) => (el.checked = false));
+        }
+      })
+    );
+
+    // הצגת ערב ג' אם הלוואה מעל 20,000
+    document.getElementsByName('loanOver20k').forEach((el) =>
+      el.addEventListener('change', (e) => {
+        if (e.target.value === 'yes') {
+          document.getElementById('arevCSection').style.display = 'block';
+        } else {
+          document.getElementById('arevCSection').style.display = 'none';
+          document.getElementById('arevDSection').style.display = 'none';
+          document.getElementsByName('loanOver30k').forEach((el) => (el.checked = false));
+        }
+      })
+    );
+
+    // הצגת ערב ד' אם הלוואה מעל 30,000
+    document.getElementsByName('loanOver30k').forEach((el) =>
+      el.addEventListener('change', (e) => {
+        if (e.target.value === 'yes') {
+          document.getElementById('arevDSection').style.display = 'block';
+        } else {
+          document.getElementById('arevDSection').style.display = 'none';
+        }
+      })
+    );
+
+    // הצגת שדה סכום מותאם אישית למשיכת פיקדון
+    withdrawAmountChoice.addEventListener('change', (e) => {
+      if (e.target.value === 'other') {
+        customWithdrawAmount.style.display = 'flex';
+      } else {
+        customWithdrawAmount.style.display = 'none';
+        customWithdrawAmount.querySelector('input').value = '';
+      }
+    });
+  </script>
+</body>
+</html>
