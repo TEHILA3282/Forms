@@ -303,11 +303,118 @@
         <div class="fieldName">מספר חשבון</div>
         <input class="TextBox" type="text" />
       </div>
+      <div id="depositSection" style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
+        <h3 class="Koteret">הפקדת פיקדון</h3>
+
+        <div class="fieldName">סוג העברה</div>
+        <select class="TextBox" id="transferType">
+          <option value="">בחר</option>
+          <option value="regular">העברה רגילה</option>
+          <option value="directDebit">משיכה מהוראת קבע</option>
+        </select>
+
+        <div id="regularTransferSection" style="display:none; margin-top:10px;">
+          <div class="fieldName">סכום ההפקדה</div>
+          <div style="display: flex; align-items: center;">
+            <input type="number" class="TextBox" style="flex: 1;" />
+            <span style="margin-right: 10px;">ש"ח</span>
+          </div>
+        </div>
+
+        <div id="directDebitSection" style="display:none; margin-top:10px;">
+          <h4 class="Koteret">הרשאה לחיוב חשבון</h4>
+
+          <div class="fieldName">האם יש לך הרשאה פעילה לגמ"ח?</div>
+          <div style="text-align: right;">
+            <label><input type="radio" name="hasPermission" value="yes" /> כן</label>
+            <label style="margin-left: 20px;"><input type="radio" name="hasPermission" value="no" /> לא</label>
+          </div>
+
+          <div id="paymentOptions" style="display:none; margin-top:10px;">
+            <div class="fieldName">סוג תשלום</div>
+            <select class="TextBox" id="paymentType">
+              <option value="">בחר</option>
+              <option value="oneTime">סכום חד פעמי</option>
+              <option value="recurring">הוראת קבע</option>
+            </select>
+
+            <div id="oneTimeAmount" style="display:none; margin-top:10px;">
+              <div class="fieldName">סכום</div>
+              <div style="display: flex; align-items: center;">
+                <input type="number" class="TextBox" style="flex: 1;" />
+                <span style="margin-right: 10px;">ש"ח</span>
+              </div>
+            </div>
+
+            <div id="recurringAmount" style="display:none; margin-top:10px;">
+              <div class="fieldName">סכום חודשי</div>
+              <div style="display: flex; align-items: center;">
+                <input type="number" class="TextBox" style="flex: 1;" />
+                <span style="margin-right: 10px;">ש"ח</span>
+              </div>
+
+              <div class="fieldName" style="margin-top:10px;">מספר תשלומים</div>
+              <select class="TextBox">
+                <option value="">בחר</option>
+                <option value="unlimited">ללא הגבלה</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="membershipSection" style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
+        <h3 class="Koteret">הצטרפות לחברות בגמ"ח</h3>
+
+        <div class="fieldName">סכום חודשי *</div>
+        <div style="display: flex; align-items: center;">
+          <input type="number" class="TextBox" style="flex: 1;" />
+          <span style="margin-right: 10px;">ש"ח</span>
+        </div>
+
+        <div class="fieldName">מספר חודשים *</div>
+        <input type="number" class="TextBox" min="1" />
+
+        <h4 class="Koteret" style="font-size: 18px; margin-top: 20px;">הרשאה לחיוב חשבון</h4>
+
+        <div class="fieldName">האם יש לך הרשאה פעילה לגמ"ח?</div>
+        <div style="text-align: right; margin-bottom: 10px;">
+          <label><input type="radio" name="hasAuthMembership" value="yes" /> כן</label>
+          <label style="margin-left: 20px;"><input type="radio" name="hasAuthMembership" value="no" /> לא</label>
+        </div>
+
+        <h4 class="Koteret" style="font-size: 18px; margin-top: 20px;">פרטי חשבון</h4>
+
+        <div class="fieldName">שם בעל החשבון</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר בנק</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר סניף</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר חשבון</div>
+        <input class="TextBox" type="text" />
+      </div>
 
       <button type="submit" class="Bt">שלח טופס</button>
     </form>
-    </form>
   </div>
+
+
 
   <script src="script.js"></script>
 </body>
