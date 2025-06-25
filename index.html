@@ -3,111 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>טופס פעולות בגמ"ח</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap');
-
-    * {
-      font-family: 'Assistant', Arial;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #f5f5f5;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 600px;
-      background: #fff;
-      margin: auto;
-      padding: 20px 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .logo {
-      display: block;
-      margin: 0 auto 15px;
-      max-width: 150px;
-    }
-
-    .Koteret {
-      color: #ff9222;
-      font-weight: bold;
-      text-align: right;
-      font-size: 21px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-
-    .fieldName {
-      text-align: right;
-      font-size: 16px;
-      color: #555;
-      margin-top: 10px;
-    }
-
-    .TextBox {
-      width: 100%;
-      padding: 6px;
-      font-size: large;
-      color: #3f475e;
-      text-align: right;
-      border: none;
-      border-bottom: 2px solid #f7bb4d;
-      background-color: #FFFFFB;
-    }
-
-    .row {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .half {
-      flex: 1;
-      min-width: 45%;
-    }
-
-    .buttonAction {
-      color: #4a4a4a;
-      background: #f1f1f1;
-      width: 100%;
-      margin: 8px 0;
-      text-align: center;
-      padding: 10px;
-      font-size: 18px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-family: 'Assistant';
-      border: 2px solid #edd9c6;
-    }
-
-    .Bt {
-      font-family: 'Assistant', sans-serif;
-      font-size: large;
-      color: white;
-      background-color: #38c232;
-      text-align: center;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    .Bt:hover {
-      background-color: #2ba623;
-    }
-
-    /* אזור ערב א' ו-ב' - עיצוב */
-    .arev-section {
-      border: 1px solid #f7bb4d;
-      padding: 15px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
@@ -115,6 +11,8 @@
 
     <h2 class="Koteret">פרטי ממלא הטופס</h2>
     <form>
+      
+       <form>
       <div class="row">
         <div class="half">
           <div class="fieldName">שם משפחה *</div>
@@ -408,112 +306,9 @@
 
       <button type="submit" class="Bt">שלח טופס</button>
     </form>
+    </form>
   </div>
 
-  <script>
-    const loanSection = document.getElementById('loanRequestSection');
-    const withdrawSection = document.getElementById('withdrawSection');
-    const withdrawAmountChoice = document.getElementById('withdrawAmountChoice');
-    const customWithdrawAmount = document.getElementById('customWithdrawAmount');
-    const allButtons = document.querySelectorAll('.buttonAction');
-
-    allButtons.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const text = btn.textContent.trim();
-
-        // תחילה – הסתרת כל החלקים
-        loanSection.style.display = 'none';
-        withdrawSection.style.display = 'none';
-
-        // הצגה בהתאם לבחירה
-        if (text === 'בקשת הלוואה') {
-          loanSection.style.display = 'block';
-        } else if (text === 'משיכת פיקדון') {
-          withdrawSection.style.display = 'block';
-        }
-
-        // איפוס כל השדות של שני הטפסים כשלא בשימוש
-        if (loanSection.style.display === 'none') {
-          loanSection.querySelectorAll('input, select, textarea').forEach((el) => {
-            if (el.type === 'radio' || el.type === 'checkbox') {
-              el.checked = false;
-            } else {
-              el.value = '';
-            }
-          });
-          document.getElementsByName('loanOver10k').forEach((el) => (el.checked = false));
-          document.getElementsByName('loanOver20k').forEach((el) => (el.checked = false));
-          document.getElementsByName('loanOver30k').forEach((el) => (el.checked = false));
-        }
-
-        if (withdrawSection.style.display === 'none') {
-          withdrawSection.querySelectorAll('input, select').forEach((el) => {
-            if (el.type === 'radio' || el.type === 'checkbox') {
-              el.checked = false;
-            } else {
-              el.value = '';
-            }
-          });
-          withdrawAmountChoice.value = '';
-          customWithdrawAmount.style.display = 'none';
-          customWithdrawAmount.querySelector('input').value = '';
-        }
-
-        // הסתרת ערב ב' וג' וד' בכל לחיצה מחדש
-        document.getElementById('arevBSection').style.display = 'none';
-        document.getElementById('arevCSection').style.display = 'none';
-        document.getElementById('arevDSection').style.display = 'none';
-      });
-    });
-
-    // הצגת ערב ב' אם הלוואה מעל 10,000
-    document.getElementsByName('loanOver10k').forEach((el) =>
-      el.addEventListener('change', (e) => {
-        if (e.target.value === 'yes') {
-          document.getElementById('arevBSection').style.display = 'block';
-        } else {
-          document.getElementById('arevBSection').style.display = 'none';
-          document.getElementById('arevCSection').style.display = 'none';
-          document.getElementById('arevDSection').style.display = 'none';
-          document.getElementsByName('loanOver20k').forEach((el) => (el.checked = false));
-          document.getElementsByName('loanOver30k').forEach((el) => (el.checked = false));
-        }
-      })
-    );
-
-    // הצגת ערב ג' אם הלוואה מעל 20,000
-    document.getElementsByName('loanOver20k').forEach((el) =>
-      el.addEventListener('change', (e) => {
-        if (e.target.value === 'yes') {
-          document.getElementById('arevCSection').style.display = 'block';
-        } else {
-          document.getElementById('arevCSection').style.display = 'none';
-          document.getElementById('arevDSection').style.display = 'none';
-          document.getElementsByName('loanOver30k').forEach((el) => (el.checked = false));
-        }
-      })
-    );
-
-    // הצגת ערב ד' אם הלוואה מעל 30,000
-    document.getElementsByName('loanOver30k').forEach((el) =>
-      el.addEventListener('change', (e) => {
-        if (e.target.value === 'yes') {
-          document.getElementById('arevDSection').style.display = 'block';
-        } else {
-          document.getElementById('arevDSection').style.display = 'none';
-        }
-      })
-    );
-
-    // הצגת שדה סכום מותאם אישית למשיכת פיקדון
-    withdrawAmountChoice.addEventListener('change', (e) => {
-      if (e.target.value === 'other') {
-        customWithdrawAmount.style.display = 'flex';
-      } else {
-        customWithdrawAmount.style.display = 'none';
-        customWithdrawAmount.querySelector('input').value = '';
-      }
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
