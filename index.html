@@ -11,181 +11,138 @@
   <div class="container">
     <img src="logo.png" alt="לוגו" class="logo" />
 
-    <h2 class="Koteret">פרטי ממלא הטופס</h2>
     <form>
+      <h2 class="Koteret">פרטי ממלא הטופס</h2>
 
-      <form>
-        <div class="row">
-          <div class="half">
-            <div class="fieldName">שם משפחה *</div>
-            <input class="TextBox" type="text" required />
 
-            <div class="fieldName">רחוב</div>
-            <input class="TextBox" type="text" />
-          </div>
+      <div class="row">
+        <div class="half">
+          <div class="fieldName">שם משפחה *</div>
+          <input class="TextBox" type="text" required />
 
-          <div class="half">
-            <div class="fieldName">שם פרטי *</div>
-            <input class="TextBox" type="text" required />
-
-            <div class="fieldName">ת.ז *</div>
-            <input class="TextBox" type="text" required />
-
-            <div class="fieldName">עיר</div>
-            <input class="TextBox" type="text" />
-          </div>
+          <div class="fieldName">רחוב</div>
+          <input class="TextBox" type="text" />
         </div>
 
-        <div class="row">
-          <div class="half">
-            <div class="fieldName">מספר</div>
-            <input class="TextBox" type="text" />
-          </div>
-          <div class="half">
-            <div class="fieldName">דירה</div>
-            <input class="TextBox" type="text" />
-          </div>
+        <div class="half">
+          <div class="fieldName">שם פרטי *</div>
+          <input class="TextBox" type="text" required />
+
+          <div class="fieldName">ת.ז *</div>
+          <input class="TextBox" type="text" required />
+
+          <div class="fieldName">עיר</div>
+          <input class="TextBox" type="text" />
         </div>
+      </div>
 
-        <div class="fieldName">מייל</div>
-        <input class="TextBox" type="email" />
-
-        <!-- שאלה נפרדת מחוץ ל'בקשת הלוואה' -->
-        <div class="fieldName" style="margin-top: 20px;">האם אתה חבר בגמ"ח?</div>
-        <div style="text-align: right; margin-bottom: 10px;">
-          <label><input type="radio" name="isMember" value="yes" /> כן</label>
-          <label style="margin-left: 20px;"><input type="radio" name="isMember" value="no" /> לא</label>
+      <div class="row">
+        <div class="half">
+          <div class="fieldName">מספר</div>
+          <input class="TextBox" type="text" />
         </div>
+        <div class="half">
+          <div class="fieldName">דירה</div>
+          <input class="TextBox" type="text" />
+        </div>
+      </div>
 
-        <h3 class="Koteret">סוג פעולה</h3>
-        <button type="button" class="buttonAction">בקשת הלוואה</button>
-        <button type="button" class="buttonAction">משיכת פיקדון</button>
-        <button type="button" class="buttonAction">הפקדת פיקדון</button>
-        <button type="button" class="buttonAction">בקשת טפסים</button>
-        <button type="button" class="buttonAction">הצטרפות לחברות בגמ"ח</button>
-        <button type="button" class="buttonAction">חתימת ערב להלוואה</button>
-        <button type="button" class="buttonAction">שכר חוב</button>
+      <div class="fieldName">מייל</div>
+      <input class="TextBox" type="email" />
 
-        <!-- אזור בקשת הלוואה -->
-        <div id="loanRequestSection"
-          style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
-          <h3 class="Koteret">בקשת הלוואה</h3>
-          <p>מבקש בזאת לאשר לי הלוואה:</p>
+      <!-- שאלה נפרדת מחוץ ל'בקשת הלוואה' -->
+      <div class="fieldName" style="margin-top: 20px;">האם אתה חבר בגמ"ח?</div>
+      <div style="text-align: right; margin-bottom: 10px;">
+        <label><input type="radio" name="isMember" value="yes" /> כן</label>
+        <label style="margin-left: 20px;"><input type="radio" name="isMember" value="no" /> לא</label>
+      </div>
 
-          <div class="fieldName">סך הלוואה *</div>
-          <input class="TextBox" type="number" min="0" step="0.01" required />
+      <h3 class="Koteret">סוג פעולה</h3>
+      <button type="button" class="buttonAction">בקשת הלוואה</button>
+      <button type="button" class="buttonAction">משיכת פיקדון</button>
+      <button type="button" class="buttonAction">הפקדת פיקדון</button>
+      <button type="button" class="buttonAction">בקשת טפסים</button>
+      <button type="button" class="buttonAction">הצטרפות לחברות בגמ"ח</button>
+      <button type="button" class="buttonAction">חתימת ערב להלוואה</button>
+      <button type="button" class="buttonAction">שטר חוב</button>
 
-          <div class="fieldName">אופן תשלום *</div>
-          <select class="TextBox" required>
-            <option value="">בחר</option>
-            <option value="oneTime">חד פעמי</option>
-            <option value="installments">תשלומים</option>
-          </select>
+      <!-- אזור בקשת הלוואה -->
+      <div id="loanRequestSection"
+        style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
+        <h3 class="Koteret">בקשת הלוואה</h3>
+        <p>מבקש בזאת לאשר לי הלוואה:</p>
 
-          <div class="fieldName">מטרת ההלוואה *</div>
-          <select class="TextBox" required>
-            <option value="">בחר</option>
-            <option value="housePurchase">רכישת דירה</option>
-            <option value="expansion">הרחבה</option>
-            <option value="renovation">שיפוץ</option>
-            <option value="barMitzvah">בר מצווה</option>
-            <option value="childrenWedding">נישואי הילדים</option>
-            <option value="extraExpense">הוצאה חריגה</option>
-          </select>
+        <div class="fieldName">סך הלוואה *</div>
+        <input class="TextBox" type="number" min="0" step="0.01" required />
 
-          <div class="fieldName">נא פרט את סיבת הבקשה</div>
-          <textarea class="TextBox" rows="4" style="resize: vertical;"></textarea>
+        <div class="fieldName">אופן תשלום *</div>
+        <select class="TextBox" required>
+          <option value="">בחר</option>
+          <option value="oneTime">חד פעמי</option>
+          <option value="installments">תשלומים</option>
+        </select>
 
-          <!-- ערב א' - תמיד מוצג -->
-          <div id="arevASection" class="arev-section">
-            <h4 class="Koteret" style="font-size: 18px; margin-bottom: 10px;">ערב א'</h4>
+        <div class="fieldName">מטרת ההלוואה *</div>
+        <select class="TextBox" required>
+          <option value="">בחר</option>
+          <option value="housePurchase">רכישת דירה</option>
+          <option value="expansion">הרחבה</option>
+          <option value="renovation">שיפוץ</option>
+          <option value="barMitzvah">בר מצווה</option>
+          <option value="childrenWedding">נישואי הילדים</option>
+          <option value="extraExpense">הוצאה חריגה</option>
+        </select>
 
-            <div class="fieldName">שם *</div>
-            <input class="TextBox" type="text" />
+        <div class="fieldName">נא פרט את סיבת הבקשה</div>
+        <textarea class="TextBox" rows="4" style="resize: vertical;"></textarea>
 
-            <div class="fieldName">שם משפחה *</div>
-            <input class="TextBox" type="text" />
+        <!-- ערב א' - תמיד מוצג -->
+        <div id="arevASection" class="arev-section">
+          <h4 class="Koteret" style="font-size: 18px; margin-bottom: 10px;">ערב א'</h4>
 
-            <div class="fieldName">ת"ז *</div>
-            <input class="TextBox" type="text" />
+          <div class="fieldName">שם *</div>
+          <input class="TextBox" type="text" />
 
-            <div class="fieldName">נייד *</div>
-            <input class="TextBox" type="tel" />
+          <div class="fieldName">שם משפחה *</div>
+          <input class="TextBox" type="text" />
 
-            <div class="fieldName">עיר *</div>
-            <input class="TextBox" type="text" />
+          <div class="fieldName">ת"ז *</div>
+          <input class="TextBox" type="text" />
 
-            <div class="fieldName">רחוב *</div>
-            <input class="TextBox" type="text" />
+          <div class="fieldName">נייד *</div>
+          <input class="TextBox" type="tel" />
 
-            <div class="row" style="gap: 10px;">
-              <div class="half">
-                <div class="fieldName">מספר *</div>
-                <input class="TextBox" type="text" />
-              </div>
-              <div class="half">
-                <div class="fieldName">דירה</div>
-                <input class="TextBox" type="text" />
-                <!-- שאלה: האם ההלוואה מעל 10,000 ש"ח? -->
-                <div class="fieldName" style="margin-top: 20px;">האם ההלוואה מעל 10,000 ש"ח?</div>
-                <div style="text-align: right; margin-bottom: 10px;">
-                  <label><input type="radio" name="loanOver10k" value="yes" /> כן</label>
-                  <label style="margin-left: 20px;">
-                    <input type="radio" name="loanOver10k" value="no" /> לא
-                  </label>
-                </div>
-              </div>
+          <div class="fieldName">עיר *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="fieldName">רחוב *</div>
+          <input class="TextBox" type="text" />
+
+          <div class="row" style="gap: 10px;">
+            <div class="half">
+              <div class="fieldName">מספר *</div>
+              <input class="TextBox" type="text" />
             </div>
-          </div>
-
-
-
-          <!-- ערב ב' - אזור למילוי, מוסתר כברירת מחדל -->
-          <div id="arevBSection" class="arev-section" style="display:none;">
-            <h4 class="Koteret" style="font-size: 18px; margin-bottom: 10px;">ערב ב'</h4>
-
-            <div class="fieldName">שם *</div>
-            <input class="TextBox" type="text" />
-
-            <div class="fieldName">שם משפחה *</div>
-            <input class="TextBox" type="text" />
-
-            <div class="fieldName">ת"ז *</div>
-            <input class="TextBox" type="text" />
-
-            <div class="fieldName">נייד *</div>
-            <input class="TextBox" type="tel" />
-
-            <div class="fieldName">עיר *</div>
-            <input class="TextBox" type="text" />
-
-            <div class="fieldName">רחוב *</div>
-            <input class="TextBox" type="text" />
-
-            <div class="row" style="gap: 10px;">
-              <div class="half">
-                <div class="fieldName">מספר *</div>
-                <input class="TextBox" type="text" />
+            <div class="half">
+              <div class="fieldName">דירה</div>
+              <input class="TextBox" type="text" />
+              <!-- שאלה: האם ההלוואה מעל 10,000 ש"ח? -->
+              <div class="fieldName" style="margin-top: 20px;">האם ההלוואה מעל 10,000 ש"ח?</div>
+              <div style="text-align: right; margin-bottom: 10px;">
+                <label><input type="radio" name="loanOver10k" value="yes" /> כן</label>
+                <label style="margin-left: 20px;">
+                  <input type="radio" name="loanOver10k" value="no" /> לא
+                </label>
               </div>
-              <div class="half">
-                <div class="fieldName">דירה</div>
-                <input class="TextBox" type="text" />
-              </div>
-            </div>
-            <!-- שאלה: האם ההלוואה מעל 20,000 ש"ח? -->
-            <div class="fieldName" style="margin-top: 20px;">האם ההלוואה מעל 20,000 ש"ח?</div>
-            <div style="text-align: right; margin-bottom: 10px;">
-              <label><input type="radio" name="loanOver20k" value="yes" /> כן</label>
-              <label style="margin-left: 20px;">
-                <input type="radio" name="loanOver20k" value="no" /> לא
-              </label>
             </div>
           </div>
         </div>
 
-        <!-- ערב ג' - אזור למילוי, מוסתר כברירת מחדל -->
-        <div id="arevCSection" class="arev-section" style="display:none;">
-          <h4 class="Koteret" style="font-size: 18px; margin-bottom: 10px;">ערב ג'</h4>
+
+
+        <!-- ערב ב' - אזור למילוי, מוסתר כברירת מחדל -->
+        <div id="arevBSection" class="arev-section" style="display:none;">
+          <h4 class="Koteret" style="font-size: 18px; margin-bottom: 10px;">ערב ב'</h4>
 
           <div class="fieldName">שם *</div>
           <input class="TextBox" type="text" />
@@ -215,157 +172,387 @@
               <input class="TextBox" type="text" />
             </div>
           </div>
-          <div class="fieldName" style="margin-top: 20px;">האם ההלוואה מעל 30,000 ש"ח?</div>
+          <!-- שאלה: האם ההלוואה מעל 20,000 ש"ח? -->
+          <div class="fieldName" style="margin-top: 20px;">האם ההלוואה מעל 20,000 ש"ח?</div>
           <div style="text-align: right; margin-bottom: 10px;">
-            <label><input type="radio" name="loanOver30k" value="yes" /> כן</label>
+            <label><input type="radio" name="loanOver20k" value="yes" /> כן</label>
             <label style="margin-left: 20px;">
-              <input type="radio" name="loanOver30k" value="no" /> לא
+              <input type="radio" name="loanOver20k" value="no" /> לא
             </label>
           </div>
         </div>
+      </div>
 
-        <!-- כאן ערב ד' בתוך הטופס -->
-        <div id="arevDSection" class="arev-section" style="display:none;">
-          <h4 class="Koteret">ערב ד'</h4>
+      <!-- ערב ג' - אזור למילוי, מוסתר כברירת מחדל -->
+      <div id="arevCSection" class="arev-section" style="display:none;">
+        <h4 class="Koteret" style="font-size: 18px; margin-bottom: 10px;">ערב ג'</h4>
 
-          <div class="fieldName">שם *</div>
-          <input class="TextBox" type="text" />
+        <div class="fieldName">שם *</div>
+        <input class="TextBox" type="text" />
 
-          <div class="fieldName">שם משפחה *</div>
-          <input class="TextBox" type="text" />
+        <div class="fieldName">שם משפחה *</div>
+        <input class="TextBox" type="text" />
 
-          <div class="fieldName">ת\"ז *</div>
-          <input class="TextBox" type="text" />
+        <div class="fieldName">ת"ז *</div>
+        <input class="TextBox" type="text" />
 
-          <div class="fieldName">נייד *</div>
-          <input class="TextBox" type="tel" />
+        <div class="fieldName">נייד *</div>
+        <input class="TextBox" type="tel" />
 
-          <div class="fieldName">עיר *</div>
-          <input class="TextBox" type="text" />
+        <div class="fieldName">עיר *</div>
+        <input class="TextBox" type="text" />
 
-          <div class="fieldName">רחוב *</div>
-          <input class="TextBox" type="text" />
+        <div class="fieldName">רחוב *</div>
+        <input class="TextBox" type="text" />
 
-          <div class="row" style="gap: 10px;">
-            <div class="half">
-              <div class="fieldName">מספר *</div>
-              <input class="TextBox" type="text" />
-            </div>
-            <div class="half">
-              <div class="fieldName">דירה</div>
-              <input class="TextBox" type="text" />
-            </div>
+        <div class="row" style="gap: 10px;">
+          <div class="half">
+            <div class="fieldName">מספר *</div>
+            <input class="TextBox" type="text" />
+          </div>
+          <div class="half">
+            <div class="fieldName">דירה</div>
+            <input class="TextBox" type="text" />
+          </div>
+        </div>
+        <div class="fieldName" style="margin-top: 20px;">האם ההלוואה מעל 30,000 ש"ח?</div>
+        <div style="text-align: right; margin-bottom: 10px;">
+          <label><input type="radio" name="loanOver30k" value="yes" /> כן</label>
+          <label style="margin-left: 20px;">
+            <input type="radio" name="loanOver30k" value="no" /> לא
+          </label>
+        </div>
+      </div>
+
+      <!-- כאן ערב ד' בתוך הטופס -->
+      <div id="arevDSection" class="arev-section" style="display:none;">
+        <h4 class="Koteret">ערב ד'</h4>
+
+        <div class="fieldName">שם *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">שם משפחה *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">ת\"ז *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">נייד *</div>
+        <input class="TextBox" type="tel" />
+
+        <div class="fieldName">עיר *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">רחוב *</div>
+        <input class="TextBox" type="text" />
+
+        <div class="row" style="gap: 10px;">
+          <div class="half">
+            <div class="fieldName">מספר *</div>
+            <input class="TextBox" type="text" />
+          </div>
+          <div class="half">
+            <div class="fieldName">דירה</div>
+            <input class="TextBox" type="text" />
+          </div>
+        </div>
+      </div>
+
+      <!-- כאן בקשת משיכת פיקדון בתוך הטופס -->
+      <div id="withdrawSection" style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
+        <h3 class="Koteret">בקשת משיכת פיקדון</h3>
+
+        <div class="fieldName">סכום משיכה</div>
+        <select class="TextBox" id="withdrawAmountChoice">
+          <option value="">בחר</option>
+          <option value="full">כל הסכום</option>
+          <option value="other">אחר</option>
+        </select>
+
+        <div id="customWithdrawAmount" style="display:none; margin-top:10px;">
+          <div class="fieldName">הזן סכום</div>
+          <div style="display: flex; align-items: center;">
+            <input type="number" class="TextBox" style="flex: 1;" />
+            <span style="margin-right: 10px;">ש״ח</span>
           </div>
         </div>
 
-        <!-- כאן בקשת משיכת פיקדון בתוך הטופס -->
-        <div id="withdrawSection"
-          style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
-          <h3 class="Koteret">בקשת משיכת פיקדון</h3>
+        <h4 class="Koteret" style="font-size: 18px; margin-top: 20px;">פרטי חשבון</h4>
 
-          <div class="fieldName">סכום משיכה</div>
-          <select class="TextBox" id="withdrawAmountChoice">
-            <option value="">בחר</option>
-            <option value="full">כל הסכום</option>
-            <option value="other">אחר</option>
-          </select>
 
-          <div id="customWithdrawAmount" style="display:none; margin-top:10px;">
-            <div class="fieldName">הזן סכום</div>
+        <div class="fieldName">שם בעל החשבון</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר בנק</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר סניף</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר חשבון</div>
+        <input class="TextBox" type="text" />
+      </div>
+
+      <div id="formRequestSection"
+        style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
+        <h3 class="Koteret">בקשת טפסים</h3>
+
+        <div class="fieldName">
+          אופן קבלת המסמכים: <span style="color: red;">*</span>
+        </div>
+        <div class="radio-tabs">
+          <label class="radio-tab">
+            <input type="radio" name="deliveryMethod" value="מייל" />
+            <span>מייל</span>
+          </label>
+          <label class="radio-tab">
+            <input type="radio" name="deliveryMethod" value="מודפס" checked />
+            <span>מודפס</span>
+          </label>
+        </div>
+
+
+
+
+        <!-- <div id="formRequestMessage" class="fieldName" style="color: #1a3a6d; font-weight: bold; margin-top: 10px;">
+
+          </div> -->
+       
+
+        <div class="fieldName" style="margin-top: 20px;">
+          נא לציין איזה טפסים הינך מבקש.<span style="color: red;">*</span>
+        </div>
+        <textarea class="TextBox" rows="2" dir="rtl" autocomplete="off" type="textarea" maxlength="700"></textarea>
+
+      </div>
+       <div id="depositSection" style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
+
+          <h3 class="Koteret">הפקדת פיקדון</h3>
+
+          <div class="fieldName">סוג העברה <span style="color: red;">*</span></div>
+          <div class="radio-tabs" style="margin-bottom: 15px;">
+            <label class="radio-tab">
+              <input type="radio" name="transferType" value="regular" />
+              <span>העברה רגילה</span>
+            </label>
+            <label class="radio-tab" style="margin-right: 30px;">
+              <input type="radio" name="transferType" value="directDebit" />
+              <span>משיכה מההוראת קבע</span>
+            </label>
+          </div>
+
+          <div id="regularTransferSection" style="display:none; margin-top:10px;">
+            <div class="fieldName">סכום ההפקדה</div>
             <div style="display: flex; align-items: center;">
               <input type="number" class="TextBox" style="flex: 1;" />
-              <span style="margin-right: 10px;">ש״ח</span>
+              <span style="margin-right: 10px;">ש"ח</span>
             </div>
           </div>
 
-          <h4 class="Koteret" style="font-size: 18px; margin-top: 20px;">פרטי חשבון</h4>
+          <div id="directDebitSection" style="display:none; margin-top:10px;">
+            <h4 class="Koteret">הרשאה לחיוב חשבון</h4>
 
-          <div class="fieldName">שם בעל החשבון</div>
-          <input class="TextBox" type="text" />
+            <div class="fieldName">האם יש לך הרשאה פעילה לגמ"ח?</div>
+            <div style="text-align: right;">
+              <label><input type="radio" name="hasPermission" value="yes" /> כן</label>
+              <label style="margin-left: 20px;"><input type="radio" name="hasPermission" value="no" /> לא</label>
+            </div>
 
-          <div class="fieldName">מספר בנק</div>
-          <input class="TextBox" type="text" />
+            <div id="paymentOptions" style="display:none; margin-top:10px;">
+              <div class="fieldName">סוג תשלום</div>
+              <select class="TextBox" id="paymentType">
+                <option value="">בחר</option>
+                <option value="oneTime">סכום חד פעמי</option>
+                <option value="recurring">הוראת קבע</option>
+              </select>
 
-          <div class="fieldName">מספר סניף</div>
-          <input class="TextBox" type="text" />
+              <div id="oneTimeAmount" style="display:none; margin-top:10px;">
+                <div class="fieldName">סכום</div>
+                <div style="display: flex; align-items: center;">
+                  <input type="number" class="TextBox" style="flex: 1;" />
+                  <span style="margin-right: 10px;">ש"ח</span>
+                </div>
+              </div>
 
-          <div class="fieldName">מספר חשבון</div>
-          <input class="TextBox" type="text" />
+              <div id="recurringAmount" style="display:none; margin-top:10px;">
+                <div class="fieldName">סכום חודשי</div>
+                <div style="display: flex; align-items: center;">
+                  <input type="number" class="TextBox" style="flex: 1;" />
+                  <span style="margin-right: 10px;">ש"ח</span>
+                </div>
+
+                <div class="fieldName" style="margin-top:10px;">מספר תשלומים</div>
+                <select class="TextBox">
+                  <option value="">בחר</option>
+                  <option value="unlimited">ללא הגבלה</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div id="formRequestSection"
-          style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
-          <h3 class="Koteret">בקשת טפסים</h3>
+      <div id="guarantorSection"
+        style="display: none; margin-top: 40px; border-top: 1px solid #f7bb4d; padding-top: 20px;">
+        <h3 class="Koteret">חתימת ערב להלוואה</h3>
 
-          <div class="fieldName">
-            אופן קבלת המסמכים: <span style="color: red;">*</span>
+        <ul style="color: #333; line-height: 1.6; font-size: 16px;">
+          <li><b>שים לב!</b> חתימה על טופס זה מחייבת אותך כערב.</li>
+          <li>באחריותך לקבל מהלווה מספר תיק ותעודת זהות של הלווה.</li>
+        </ul>
+
+        <h4 style="color: #f7941d; font-size: 20px; margin-top: 30px;">אני מאשר כי ידוע לי</h4>
+
+        <div class="row">
+          <div class="half">
+            <div class="fieldName">שם הלווה *</div>
+            <input class="TextBox" type="text" />
+            <div class="fieldName">מס' תיק *</div>
+            <input class="TextBox" type="text" />
           </div>
-          <div class="radio-tabs">
-            <label class="radio-tab">
-              <input type="radio" name="deliveryMethod" value="מייל" />
-              <span>מייל</span>
-            </label>
-            <label class="radio-tab">
-              <input type="radio" name="deliveryMethod" value="מודפס" checked />
-              <span>מודפס</span>
-            </label>
+          <div class="half">
+            <div class="fieldName">מס' ת.ז. של הלווה *</div>
+            <input class="TextBox" type="text" />
+            <div class="fieldName">יקבל הלוואה על סכום</div>
+            <input class="TextBox" type="text" />
           </div>
-
-
-          <div id="formRequestMessage" class="fieldName" style="color: #1a3a6d; font-weight: bold; margin-top: 10px;">
-          </div>
-
-
-          <div class="fieldName" style="margin-top: 20px;">
-            נא לציין איזה טפסים הינך מבקש.<span style="color: red;">*</span>
-          </div>
-          <textarea class="TextBox" rows="2" dir="rtl" autocomplete="off" type="textarea" maxlength="700"></textarea>
-
         </div>
 
-   <div id="guarantorSection" style="display: none; margin-top: 40px; border-top: 1px solid #f7bb4d; padding-top: 20px;">
-  <h3 class="Koteret">חתימת ערב להלוואה</h3>
+        <p style="margin-top: 25px; font-weight: bold; font-size: 16px; color: #333;">
+          וכי אני ערב בקבל לשלם כל סכום ההלוואה בתנאים שנקבעו על ידי הנהלת הקרן ומתחייב לשלם בתוך שבוע ימים מיום פניית
+          הנהלת הקרן בדבר אי קיום ההלוואה על אחד מתנאי ההלוואה.
+        </p>
 
-  <ul style="color: #333; line-height: 1.6; font-size: 16px;">
-    <li><b>שים לב!</b> חתימה על טופס זה מחייבת אותך כערב.</li>
-    <li>באחריותך לקבל מהלווה מספר תיק ותעודת זהות של הלווה.</li>
-  </ul>
+      </div>
 
-  <h4 style="color: #f7941d; font-size: 20px; margin-top: 30px;">אני מאשר כי ידוע לי</h4>
 
-  <div class="row">
-    <div class="half">
-      <div class="fieldName">שם הלווה *</div>
-      <input class="TextBox" type="text" />
-      <div class="fieldName">מס' תיק *</div>
-      <input class="TextBox" type="text" />
-    </div>
-    <div class="half">
-      <div class="fieldName">מס' ת.ז. של הלווה *</div>
-      <input class="TextBox" type="text" />
-      <div class="fieldName">יקבל הלוואה על סכום</div>
-      <input class="TextBox" type="text" />
-    </div>
-  </div>
 
-  <p style="margin-top: 25px; font-weight: bold; font-size: 16px; color: #333;">
-    וכי אני ערב בקבל לשלם כל סכום ההלוואה בתנאים שנקבעו על ידי הנהלת הקרן ומתחייב לשלם בתוך שבוע ימים מיום פניית הנהלת הקרן בדבר אי קיום ההלוואה על אחד מתנאי ההלוואה.
-  </p>
 
+
+
+
+      <div id="membershipSection"
+        style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
+        <h3 class="Koteret">הצטרפות לחברות בגמ"ח</h3>
+
+        <div class="fieldName">סכום חודשי *</div>
+        <div style="display: flex; align-items: center;">
+          <input type="number" class="TextBox" style="flex: 1;" />
+          <span style="margin-right: 10px;">ש"ח</span>
+        </div>
+
+        <div class="fieldName">מספר חודשים *</div>
+        <input type="number" class="TextBox" min="1" />
+
+        <h4 class="Koteret" style="font-size: 18px; margin-top: 20px;">הרשאה לחיוב חשבון</h4>
+
+        <div class="fieldName">האם יש לך הרשאה פעילה לגמ"ח?</div>
+        <div style="text-align: right; margin-bottom: 10px;">
+          <label><input type="radio" name="hasAuthMembership" value="yes" /> כן</label>
+          <label style="margin-left: 20px;"><input type="radio" name="hasAuthMembership" value="no" /> לא</label>
+        </div>
+
+        <h4 class="Koteret" style="font-size: 18px; margin-top: 20px;">פרטי חשבון</h4>
+
+        <div class="fieldName">שם בעל החשבון</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר בנק</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר סניף</div>
+        <input class="TextBox" type="text" />
+
+        <div class="fieldName">מספר חשבון</div>
+        <input class="TextBox" type="text" />
+      </div>
+      
+      <div id="shtarHovSection" style="display:none; margin-top:20px; border-top:1px solid #f7bb4d; padding-top:20px;">
+  <h3 class="Koteret">שטר חוב</h3>
+  <p style="color:#d97706; font-weight: bold;">אני החתום מטה מאשר קבלת הלוואה</p>
+
+  <div class="fieldName">בסך *</div>
+  <input class="TextBox" type="number" />
+
+  <div class="fieldName">במילים *</div>
+  <input class="TextBox" type="text" />
+
+  <div class="fieldName">בתאריך *</div>
+  <input class="TextBox" type="date" />
+
+  <div class="fieldName">מס' תיק (כפי שנמסר ע"י הגמח) *</div>
+  <input class="TextBox" type="text" />
+
+  <p style="font-weight: bold;">ומתחייב לשלם נגד שטר חוב זה לפי התנאים הבאים.</p>
+
+  <div class="fieldName">מספר תשלומים *</div>
+  <input class="TextBox" type="number" />
+
+  <div class="fieldName">סכום כל תתשלום *</div>
+  <input class="TextBox" type="number" />
+
+  <div class="fieldName">יום הגביה *</div>
+  <select class="TextBox">
+    <option value="1">1</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+  </select>
+  <div class="fieldName">תשלום ראשון *</div>
+  <input class="TextBox" type="date" />
+
+  <div class="fieldName">תשלום אחרון *</div>
+  <input class="TextBox" type="date" />
+
+  <label style="margin-top: 10px; display: inline-block;">
+    <input type="checkbox" />
+    קיים הוראת קבע פעילה לקוד מוסד 47865 מטבע של חסד *
+  </label>
+
+  <h4 class="Koteret" style="margin-top: 20px;">התשלום יתבצע מחשבון הבנק</h4>
+
+  <div class="fieldName">שם בעל החשבון *</div>
+  <input class="TextBox" type="text" />
+
+  <div class="fieldName">מספר בנק *</div>
+  <input class="TextBox" type="text" />
+
+  <div class="fieldName">מספר סניף *</div>
+  <input class="TextBox" type="text" />
+
+  <div class="fieldName">מספר חשבון *</div>
+  <input class="TextBox" type="text" />
+
+  <ul style="margin-top: 20px; line-height: 1.6; font-size: 15px; font-weight: bold;">
+<li>במקרה שבו יחזור חיוב אני מתחייב ליצור קשר מידי עם הנהלת הקרן ולהסדיר את החיוב ובמידה שלא מבטע של חסד תגבה את החיוב לאחר 10 ימים באופן אוטומט.</li>
+<li>ידוע לי כי במקרה של אי כיבוד תשלום ע"י הבנק תהיה רשאית מטבע של חסד ע"ר לגבות את כל העמלות שחויבה ע"י הבנק או כל גורם אחר.</li>  
+<li>רישום פעולות הבנק או של חסד ע"ר בלבד יהיו בירור לעניין טענת פרעתי.</li>
+<li>אי כיבוד אחר מסעיפי תקנון הקרן למתן הלוואת יחייבנתי להחזיר מיידית את יתרת החוב במלואה.</li>
+</ul>
 </div>
 
-        
-        
-        
-        <p style="text-align: center; font-size: 13px; color: #888; margin-top: 20px;">
-          לפני שליחת הטופס יפתח חלון לחתימה דיגיטלית
-        </p>
-        <div style="text-align: center; margin-top: 30px;">
-          <button type="submit" class="Bt">שלח טופס</button>
-        </div>
-      </form>
+
+      <p style="text-align: center; font-size: 13px; color: #888; margin-top: 20px;">
+        לפני שליחת הטופס יפתח חלון לחתימה דיגיטלית
+      </p>
+      <div style="text-align: center; margin-top: 30px;">
+        <button type="submit" class="Bt">שלח טופס</button>
+      </div>
+
     </form>
   </div>
+
+
 
   <script src="script.js"></script>
 </body>
