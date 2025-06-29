@@ -99,3 +99,45 @@
       border-radius: 6px;
       margin-bottom: 20px;
     }
+
+
+    .radio-tabs {
+  display: flex;
+  gap: 20px;
+  justify-content: right;
+  margin-bottom: 10px;
+}
+
+.radio-tab {
+  position: relative;
+  cursor: pointer;
+  font-size: 18px;
+  color: #000;
+}
+
+.radio-tab input[type="radio"] {
+  display: none;
+}
+
+.radio-tab span {
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.radio-tab input[type="radio"]:checked + span {
+  border-bottom: 2px solid #f7bb4d;
+  color: #000;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.TextBox:focus {
+  border-bottom: 2px solid #f7bb4d;
+}
+
+
+  
