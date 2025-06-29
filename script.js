@@ -7,7 +7,6 @@ const sections = {
   'הצטרפות לחברות בגמ"ח': document.getElementById('membershipSection'),
   'חתימת ערב להלוואה': document.getElementById('guarantorSection'),
   'שטר חוב': document.getElementById('shtarHovSection'),
-
 };
 
 // עזר לניקוי שדות
@@ -54,6 +53,11 @@ allButtons.forEach((btn) => {
         document.getElementsByName(name).forEach(radio => radio.checked = false);
       });
     }
+
+    // 🔄 שינוי נוסף: הסתרת שאר הכפתורים
+    allButtons.forEach(button => {
+      button.style.display = (button === btn) ? 'block' : 'none';
+    });
   });
 });
 
@@ -119,51 +123,63 @@ if (withdrawAmountChoice && customWithdrawAmount) {
   });
 }
 
-// משלוח טפסים – שינוי טקסט
+// בקשת טפסים – שינוי טקסט
 const deliveryRadios = document.getElementsByName('deliveryMethod');
 const formRequestMessage = document.getElementById('formRequestMessage');
-deliveryRadios.forEach(radio => {
-  radio.addEventListener('change', () => {
-    if (radio.checked) {
-      if (radio.value === 'מודפס') {
-        formRequestMessage.textContent = 'גבאי הגמ"ח יצור קשר להעברת הטפסים.';
-      } else if (radio.value === 'מייל') {
-        formRequestMessage.textContent = 'שים לב שהטפסים ישלחו לכתובת מייל שהזנת בפרטים האישיים.';
+if (formRequestMessage) {
+  deliveryRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (radio.checked) {
+        formRequestMessage.textContent = radio.value === 'מודפס'
+          ? 'גבאי הגמ"ח יצור קשר להעברת הטפסים.'
+          : 'שים לב שהטפסים ישלחו לכתובת מייל שהזנת בפרטים האישיים.';
       }
-    }
+    });
   });
-});
+}
 
 // הפקדת פיקדון
 document.querySelectorAll('input[name="transferType"]').forEach(radio => {
   radio.addEventListener('change', () => {
-    if (radio.value === 'regular' && radio.checked) {
-      regularTransferSection.style.display = 'block';
-      directDebitSection.style.display = 'none';
-    } else if (radio.value === 'directDebit' && radio.checked) {
-      directDebitSection.style.display = 'block';
-      regularTransferSection.style.display = 'none';
+    const regular = document.getElementById('regularTransferSection');
+    const direct = document.getElementById('directDebitSection');
+    if (radio.value === 'regular') {
+      regular.style.display = 'block';
+      direct.style.display = 'none';
+      clearInputs(direct);
+    } else if (radio.value === 'directDebit') {
+      regular.style.display = 'none';
+      direct.style.display = 'block';
+      clearInputs(regular);
     }
   });
 });
 
-
-const paymentOptions = document.getElementById('paymentOptions');
-const paymentType = document.getElementById('paymentType');
-const oneTimeAmount = document.getElementById('oneTimeAmount');
-const recurringAmount = document.getElementById('recurringAmount');
-
-document.getElementsByName('hasPermission').forEach(radio => {
+// הרשאה פעילה בגמ"ח
+document.querySelectorAll('input[name="hasPermission"]').forEach(radio => {
   radio.addEventListener('change', () => {
-    paymentOptions.style.display = radio.value === 'yes' && radio.checked ? 'block' : 'none';
-    oneTimeAmount.style.display = 'none';
-    recurringAmount.style.display = 'none';
+    const paymentOptions = document.getElementById('paymentOptions');
+    const oneTime = document.getElementById('oneTimeAmount');
+    const recurring = document.getElementById('recurringAmount');
+    if (radio.value === 'yes') {
+      paymentOptions.style.display = 'block';
+    } else {
+      paymentOptions.style.display = 'none';
+      oneTime.style.display = 'none';
+      recurring.style.display = 'none';
+      clearInputs(paymentOptions);
+    }
   });
 });
 
-if (paymentType) {
-  paymentType.addEventListener('change', () => {
-    oneTimeAmount.style.display = paymentType.value === 'oneTime' ? 'block' : 'none';
-    recurringAmount.style.display = paymentType.value === 'recurring' ? 'block' : 'none';
+const paymentTypeSelect = document.getElementById('paymentType');
+if (paymentTypeSelect) {
+  paymentTypeSelect.addEventListener('change', () => {
+    const oneTime = document.getElementById('oneTimeAmount');
+    const recurring = document.getElementById('recurringAmount');
+    oneTime.style.display = paymentTypeSelect.value === 'oneTime' ? 'block' : 'none';
+    recurring.style.display = paymentTypeSelect.value === 'recurring' ? 'block' : 'none';
+    if (paymentTypeSelect.value !== 'oneTime') clearInputs(oneTime);
+    if (paymentTypeSelect.value !== 'recurring') clearInputs(recurring);
   });
 }
